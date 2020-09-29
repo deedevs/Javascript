@@ -32,20 +32,28 @@ function writeToLog(
 
 function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
+
+  if (
+    calculationType !== "ADD" &&
+    calculationType !== "SUBTRACT" &&
+    calculationType !== "MULTIPLY" &&
+    calculationType !== "DIVIDE" ||
+    !enteredNumber
+  ) {
+    return;
+  }
   const initialResult = currentResult;
   let mathOperator;
   if (calculationType === "ADD") {
     currentResult += enteredNumber;
     mathOperator = "+";
-  } else if (calculationType === 'SUBTRACT') {
+  } else if (calculationType === "SUBTRACT") {
     currentResult -= enteredNumber;
     mathOperator = "-";
-  }
-  else if (calculationType === 'MULTIPLY') {
+  } else if (calculationType === "MULTIPLY") {
     currentResult *= enteredNumber;
     mathOperator = "*";
-  }
-  else{
+  } else {
     currentResult /= enteredNumber;
     mathOperator = "/";
   }
@@ -62,10 +70,10 @@ function subtract() {
   calculateResult("SUBTRACT");
 }
 function multiply() {
-    calculateResult("MULTIPLY");
+  calculateResult("MULTIPLY");
 }
 function divide() {
-    calculateResult("DIVIDE");
+  calculateResult("DIVIDE");
 }
 
 addBtn.addEventListener("click", add);
